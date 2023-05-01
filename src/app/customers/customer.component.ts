@@ -30,7 +30,10 @@ export class CustomerComponent implements OnInit {
     this.customerForm = this.fb.group({
       firstName: ['', [Validators.minLength(3)]],
       lastName: ['', [Validators.minLength(50)]],
-      email: ['', [Validators.required, Validators.email]],
+      emailGroup: this.fb.group({
+        email: ['', [Validators.required, Validators.email]],
+        confimEmail: ['', Validators.required],
+      }),
       phone: '',
       notification: 'email',
       rating:[null,ratingRange(1,5)],
