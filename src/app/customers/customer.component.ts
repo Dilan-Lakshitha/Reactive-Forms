@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup} from '@angular/forms';
+import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 import { Customer } from './customer';
 
@@ -18,8 +18,8 @@ export class CustomerComponent implements OnInit {
   ngOnInit(): void {
     //creating a Form group method using Formbuilder instance,FoemControl associated with the Form group.
     this.customerForm=this.fb.group({
-      firstName:'',
-      lastName:'',
+      firstName:['',[Validators.minLength(3)]],
+      lastName:['',[Validators.minLength(3)]],
       email:'',
       sendCatalog: true
     })
