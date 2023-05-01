@@ -90,7 +90,7 @@
         </div>
       </div>
 
-      
+
 
 
       <div class="form-group row mb-2">
@@ -117,19 +117,38 @@
       </div>
 
       <div class="form-group row mb-2">
+        <label class="col-md col-form-label"
+               for="ratingId">Rating</label>
         <div class="col-md-8">
-          <div class="form-check">
-            <label class="form-check-label">
-              <input class="form-check-input"
-                     id="sendCatalogId"
-                     type="checkbox"
-                     name="sendCatalog"> Send me your catalog
-            </label>
-          </div>
+          <input class="form-control"
+                 id="ratingId"
+                 type="number"
+                 formControlName="rating"
+                 [ngClass]="{'is-invalid':(customerForm.get('rating')?.touched ||
+                                                      customerForm.get('rating')?.dirty) &&
+                                                      !customerForm.get('rating')?.valid}" />
+          <span class="invalid-feedback">
+            <span *ngIf="customerForm.get('rating')?.errors?.range">
+              Please rate your experience form 1 to 5.
+            </span>
+          </span>
         </div>
       </div>
 
-      <!-- <div *ngIf="customer.sendCatalog">
+<div class="form-group row mb-2">
+  <div class="col-md-8">
+    <div class="form-check">
+      <label class="form-check-label">
+        <input class="form-check-input"
+               id="sendCatalogId"
+               type="checkbox"
+               name="sendCatalog"> Send me your catalog
+      </label>
+    </div>
+  </div>
+</div>
+
+<!-- <div *ngIf="customer.sendCatalog">
         <div class="form-group row mb-2">
           <label class="col-md-2 col-form-label pt-0">Address Type</label>
           <div class="col-md-8">
@@ -233,25 +252,25 @@
         </div>
       </div> -->
 
-      <div class="form-group row mb-2">
-        <div class="offset-md-2 col-md-4">
-          <button class="btn btn-primary mr-3"
-                  type="submit"
-                  style="width:80px"
-                  [title]="customerForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
-                  [disabled]="!customerForm.valid">
-            Save
-          </button>
+<div class="form-group row mb-2">
+  <div class="offset-md-2 col-md-4">
+    <button class="btn btn-primary mr-3"
+            type="submit"
+            style="width:80px"
+            [title]="customerForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+            [disabled]="!customerForm.valid">
+      Save
+    </button>
 
-          <button class="btn btn-primary mr-3"
-                  type="button"
-                  (Click)="populateTestData()">
-            Test Data
-          </button>
-        </div>
-      </div>
-    </form>
+    <button class="btn btn-primary mr-3"
+            type="button"
+            (Click)="populateTestData()">
+      Test Data
+    </button>
   </div>
+</div>
+</form>
+</div>
 </div>
 <br>Dirty: {{ customerForm.dirty }}
 <br>Touched: {{ customerForm.touched }}

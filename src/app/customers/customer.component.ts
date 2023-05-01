@@ -1,7 +1,15 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import { AbstractControl, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 
 import { Customer } from './customer';
+
+//this fuction can use any component on other part of application
+function ratingRange(c:AbstractControl):{[key:string]:boolean}|null{
+  if(c.value !==null&&(isNaN(c.value)||c.value<1||c.value>5)){
+    return{'range':true};
+  }
+  return null;
+}
 
 @Component({
   selector: 'app-customer',
@@ -23,6 +31,7 @@ export class CustomerComponent implements OnInit {
       email: ['', [Validators.required, Validators.email]],
       phone: '',
       notification: 'email',
+      rating:[null,ratingRange],
       sendCatalog: true
     })
 
@@ -35,7 +44,7 @@ export class CustomerComponent implements OnInit {
   }
   // Data get form a component to html
   populateTestData(): void {
-    this.customerForm.setValue({
+    this.customerForm.setValue({ 
       firstName: 'Jack',
       lastName: 'Harkness',
       email: 'jack@torchwood.com',
