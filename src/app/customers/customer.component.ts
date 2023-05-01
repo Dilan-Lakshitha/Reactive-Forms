@@ -31,6 +31,16 @@ export class CustomerComponent implements OnInit {
       sendCatalog:false
     });
   }
+
+  // populateTestData():void{
+  //   this.customerForm.patchValue({
+  //     firstName:'Jack',
+  //     lastName:'Harkness',
+  //     email:'jack@torchwood.com',
+  //     sendCatalog:false
+  //   });
+  // }
+
   save(): void {
     console.log(this.customerForm);
     console.log('Saved: ' + JSON.stringify(this.customerForm.value));
