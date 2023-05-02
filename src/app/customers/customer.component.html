@@ -74,7 +74,7 @@
             </span>
           </div>
         </div>
-      
+
         <div class="form-group row mb-2">
           <label class="col-md-2 col-form-label"
                  for="confirmEmailId">Confirm Email</label>
@@ -128,8 +128,7 @@
             <label class="form-check-label">
               <input class="form-check-input"
                      type="radio"
-                     formControlName="notification"
-                     (click)="setNotifaction('email')">Email
+                     formControlName="notification">Email
             </label>
           </div>
           <div class="form-check form-check-inline">
@@ -137,8 +136,7 @@
               <input class="form-check-input"
                      type="radio"
                      value="text"
-                     formControlName="notification"
-                     (click)="setNotifaction('text')">Text
+                     formControlName="notification">Text
             </label>
           </div>
         </div>
@@ -163,20 +161,20 @@
         </div>
       </div>
 
-<div class="form-group row mb-2">
-  <div class="col-md-8">
-    <div class="form-check">
-      <label class="form-check-label">
-        <input class="form-check-input"
-               id="sendCatalogId"
-               type="checkbox"
-               name="sendCatalog"> Send me your catalog
-      </label>
-    </div>
-  </div>
-</div>
+      <div class="form-group row mb-2">
+        <div class="col-md-8">
+          <div class="form-check">
+            <label class="form-check-label">
+              <input class="form-check-input"
+                     id="sendCatalogId"
+                     type="checkbox"
+                     name="sendCatalog"> Send me your catalog
+            </label>
+          </div>
+        </div>
+      </div>
 
-<!-- <div *ngIf="customer.sendCatalog">
+      <!-- <div *ngIf="customer.sendCatalog">
         <div class="form-group row mb-2">
           <label class="col-md-2 col-form-label pt-0">Address Type</label>
           <div class="col-md-8">
@@ -280,25 +278,25 @@
         </div>
       </div> -->
 
-<div class="form-group row mb-2">
-  <div class="offset-md-2 col-md-4">
-    <button class="btn btn-primary mr-3"
-            type="submit"
-            style="width:80px"
-            [title]="customerForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
-            [disabled]="!customerForm.valid">
-      Save
-    </button>
+      <div class="form-group row mb-2">
+        <div class="offset-md-2 col-md-4">
+          <button class="btn btn-primary mr-3"
+                  type="submit"
+                  style="width:80px"
+                  [title]="customerForm.valid ? 'Save your entered data' : 'Disabled until the form data is valid'"
+                  [disabled]="!customerForm.valid">
+            Save
+          </button>
 
-    <button class="btn btn-primary mr-3"
-            type="button"
-            (Click)="populateTestData()">
-      Test Data
-    </button>
+          <button class="btn btn-primary mr-3"
+                  type="button"
+                  (Click)="populateTestData()">
+            Test Data
+          </button>
+        </div>
+      </div>
+    </form>
   </div>
-</div>
-</form>
-</div>
 </div>
 <br>Dirty: {{ customerForm.dirty }}
 <br>Touched: {{ customerForm.touched }}

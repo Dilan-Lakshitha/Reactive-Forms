@@ -57,7 +57,7 @@ export class CustomerComponent implements OnInit {
     })
     // this is how to watch of cahnges 
     this.customerForm.get('notification')?.valueChanges.subscribe(
-      value=>console.log(value)
+      value=>this.setNotifaction(value)
     );
 
     //   this.customerForm=new FormGroup({
