@@ -62,14 +62,7 @@ export class CustomerComponent implements OnInit {
       notification: 'email',
       rating:[null,ratingRange(1,5)],
       sendCatalog: true,
-      adaresses:this.fb.group({
-        addressType:'home',
-      street1:'',
-      street2:'',
-      city:'',
-      state:'',
-      zip:''
-      })
+      adaresses:this.buildAddresss() 
     });
     //wather 
     // this is how to watch of cahnges 
@@ -89,6 +82,17 @@ export class CustomerComponent implements OnInit {
     //     email: new FormControl(),
     //     sendCatalog: new FormControl(true),
     //   });
+  }
+
+  buildAddresss():FormGroup{
+    return this.fb.group({
+      addressType:'home',
+    street1:'',
+    street2:'',
+    city:'',
+    state:'',
+    zip:''
+    })
   }
   // Data get form a component to html
   populateTestData(): void {
