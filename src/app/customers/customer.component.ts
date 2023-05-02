@@ -88,6 +88,9 @@ export class CustomerComponent implements OnInit {
     //     sendCatalog: new FormControl(true),
     //   });
   }
+  addAddress():void{
+    this.addresses.push(this.buildAddresss());
+  }
 
   buildAddresss():FormGroup{
     return this.fb.group({
