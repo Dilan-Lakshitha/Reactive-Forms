@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators} from '@angular/forms'; 
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators,FormArray} from '@angular/forms'; 
 
 import { debounceTime} from 'rxjs/operators';
 
@@ -39,6 +39,11 @@ export class CustomerComponent implements OnInit {
   customerForm!: FormGroup;
   customer = new Customer();
   emailMessage!: string; 
+  
+
+  get addresses():FormArray{
+    return <FormArray>this.customerForm.get('addresses');
+  }
 
   private validationMessages :any={
     required:'Please enter your email address.',
@@ -62,7 +67,7 @@ export class CustomerComponent implements OnInit {
       notification: 'email',
       rating:[null,ratingRange(1,5)],
       sendCatalog: true,
-      adaresses:this.buildAddresss() 
+      adaresses:this.fb.array([this.buildAddresss()])
     });
     //wather 
     // this is how to watch of cahnges 
