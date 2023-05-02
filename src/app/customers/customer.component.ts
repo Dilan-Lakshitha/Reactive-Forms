@@ -3,6 +3,21 @@ import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Vali
 
 import { Customer } from './customer';
 
+function emailMatcher(c:AbstractControl):{[key:string]:boolean} | null{
+  const emailControl=c.get('email');
+  const confirmControl=c.get('confirmEmail');
+
+  if(emailControl?.pristine||confirmControl?.pristine){
+    return null;
+  }
+
+  if(emailControl?.value===confirmControl?.value){
+    return null;
+  }
+  return {'match':true};
+}
+
+
 //this fuction can use any component on other part of application
 function ratingRange(min: number, max: number): ValidatorFn {
   return (c: AbstractControl): { [key: string]: boolean } | null=> {
@@ -33,7 +48,7 @@ export class CustomerComponent implements OnInit {
       emailGroup: this.fb.group({
         email: ['', [Validators.required, Validators.email]],
         confimEmail: ['', Validators.required],
-      }),
+      },{Validators:emailMatcher}),
       phone: '',
       notification: 'email',
       rating:[null,ratingRange(1,5)],
