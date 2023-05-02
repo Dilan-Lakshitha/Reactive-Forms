@@ -55,6 +55,10 @@ export class CustomerComponent implements OnInit {
       rating:[null,ratingRange(1,5)],
       sendCatalog: true
     })
+    // this is how to watch of cahnges 
+    this.customerForm.get('notification')?.valueChanges.subscribe(
+      value=>console.log(value)
+    );
 
     //   this.customerForm=new FormGroup({
     //     firstName: new FormControl(),
