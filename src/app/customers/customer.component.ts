@@ -61,8 +61,14 @@ export class CustomerComponent implements OnInit {
       phone: '',
       notification: 'email',
       rating:[null,ratingRange(1,5)],
-      sendCatalog: true
-    })
+      sendCatalog: true,
+      addressType:'home',
+      street1:'',
+      street2:'',
+      city:'',
+      state:'',
+      zip:''
+    });
     //wather 
     // this is how to watch of cahnges 
     this.customerForm.get('notification')?.valueChanges.subscribe(
