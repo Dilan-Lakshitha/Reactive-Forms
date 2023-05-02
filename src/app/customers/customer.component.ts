@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { AbstractControl, FormBuilder, FormControl, FormGroup, ValidatorFn, Validators} from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, ValidatorFn, Validators} from '@angular/forms';
 
 import { Customer } from './customer';
 
@@ -45,10 +45,11 @@ export class CustomerComponent implements OnInit {
     this.customerForm = this.fb.group({
       firstName: ['', [Validators.minLength(3)]],
       lastName: ['', [Validators.minLength(50)]],
+      //nested formBuilder group
       emailGroup: this.fb.group({
         email: ['', [Validators.required, Validators.email]],
-        confimEmail: ['', Validators.required],
-      },{Validators:emailMatcher}),
+        confirmEmail: ['', Validators.required],
+      },{Validators: emailMatcher}),
       phone: '',
       notification: 'email',
       rating:[null,ratingRange(1,5)],
